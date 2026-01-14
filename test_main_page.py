@@ -6,7 +6,9 @@ def test_guest_can_go_to_login_page(browser): # Этот тест проверя
     link = "https://ecommerce-playground.lambdatest.io/index.php?route=common/home"
     page = MainPage(browser, link)   # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
     page.open()                      # открываем страницу
-
     # ТОЛЬКО проверка наличия ссылки
-    page.should_be_login_link()         # выполняем метод страницы — переходим на страницу логина
+    #should_be_login_link()         # выполняем метод страницы — переходим на страницу логина
+    page.go_to_login_page()
+    login_page = LoginPage(browser, browser.current_url)
+    login_page.should_be_login_page()
 
