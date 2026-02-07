@@ -13,6 +13,7 @@
 
 ## 📁 Структура проекта
 
+---
 Page_Object_Project/
 │
 ├── pages/
@@ -30,7 +31,7 @@ Page_Object_Project/
 ├── pytest.ini
 ├── requirements.txt
 └── README.md
-
+---
 
 ---
 
