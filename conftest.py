@@ -1,32 +1,23 @@
-from email.policy import default
-
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+import time
+
 
 def pytest_addoption(parser):
     parser.addoption(
         "--language",
         action="store",
         default="en",
-        help="Choose interface language"
+        help="Choose language"
     )
+
 
 @pytest.fixture(scope="function")
 def browser(request):
-    language = request.config.getoption("language")
-
-    options = webdriver.ChromeOptions()
-    options.add_experimental_option(
-        "prefs", {"intl.accept_languages": language}
-    )
-
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=options
-    )
-    yield driver
-    driver.quit()
-
+    options = Options()
+    options.add_argument("--lang=" + request.config.getoption("--language"))
+    browser = webdriver.Chrome(options=options)
+    yield browser
+    browser.quit()
 
