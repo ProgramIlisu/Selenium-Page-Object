@@ -68,8 +68,8 @@ pytest -v
 Запуск тестов для ревью:
 
 pytest -v --tb=line --language=en -m need_review
-
-🏷 Используемые метки PyTest
+```
+##🏷 Используемые метки PyTest
 
 Метки зарегистрированы в pytest.ini.
 
